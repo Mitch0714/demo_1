@@ -64,7 +64,6 @@
     $('#welcome').textContent=next==='register'?'Find your everyday.':next==='reset'?'Forgot password?':'Welcome back.';
     $('.intro').textContent=next==='register'?'Create your account and make yourself at home.':next==='reset'?'Enter your email to start password recovery.':'Sign in for a little more of what you love.';
     submit.textContent=next==='register'?'Create account':next==='reset'?'Continue':'Sign in';
-    $('.new').textContent=next==='login'?'New here?':'Already a member?';$('[data-info="create"]').textContent=next==='login'?'Create an account':'Sign in';
     password.value='';confirm.value='';password.type='password';$('.show').setAttribute('aria-label','Show password');$('.show').setAttribute('aria-pressed','false');
     password.autocomplete=next==='register'?'new-password':'current-password';
     password.setAttribute('aria-describedby',next==='register'?'password-error password-rules caps-hint':'password-error caps-hint');
@@ -98,7 +97,6 @@
   });
   demoBar.querySelector('button').addEventListener('click',()=>{if(busy)return;setMode('login',false);email.value=demo.email;password.value=demo.password;announce('Demo details filled in. Select Sign in to continue.','success');submit.focus();});
   back.addEventListener('click',()=>setMode('login'));
-  $('[data-info="create"]').addEventListener('click',()=>setMode(mode==='login'?'register':'login'));
   $('[data-info="forgot"]').addEventListener('click',()=>setMode('reset'));
   const messages={google:['Google sign-in','Google sign-in is not connected yet. Use the demo account to explore the account experience.'],privacy:['Your privacy','This demo does not send sign-in details to a server or store passwords. “Remember my email” saves only your email on this device. Fonts load from Google.'],terms:['About this demo','FORMA is an interactive storefront concept. Demo sessions are temporary. Real accounts, email delivery and purchases are not connected.']};
   Object.keys(messages).forEach(key=>$('[data-info="'+key+'"]').addEventListener('click',()=>{if(busy)return;$('#dialog-title').textContent=messages[key][0];$('#dialog-text').textContent=messages[key][1];$('dialog').showModal();}));
